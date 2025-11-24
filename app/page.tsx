@@ -113,8 +113,8 @@ export default function LandingPage() {
         </h1>
 
         <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          A hyper-clean, dark-mode native client for macOS and Windows.
-          Engineered for seamless file sharing and built to preserve history.
+          No accounts. No tracking. No corporate overlords. Just pure, encrypted
+          chat on the protocol that built the internet.
         </p>
 
         {isWaitlistMode ? (
@@ -149,22 +149,21 @@ export default function LandingPage() {
           </div>
           <div className="p-6 font-mono text-sm text-left space-y-2">
             <div className="text-zinc-500">
-              12:04:01 &lt;system&gt; Connected to irc.libera.chat (TLS)
+              23:42:01 &lt;system&gt; Connected via TLS 1.3
             </div>
-            <div className="text-zinc-500">
-              12:04:02 &lt;system&gt; NickServ: You are now identified
+            <div>
+              <span className="text-purple-400 font-bold">&lt;neo&gt;</span>{' '}
+              discord went down again lol
             </div>
             <div>
               <span className="text-emerald-500 font-bold">
                 &lt;satchmo&gt;
               </span>{' '}
-              Auto-reconnect saved me during that network blip. Rejoined all
-              channels automatically.
+              meanwhile IRC has been up since 1988
             </div>
             <div>
-              <span className="text-blue-400 font-bold">&lt;user_01&gt;</span>{' '}
-              The inline image preview is so clean. No more clicking random
-              links.
+              <span className="text-blue-400 font-bold">&lt;anon_42&gt;</span>{' '}
+              based. no phone number required, no data harvesting
             </div>
             <div className="text-zinc-600 animate-pulse">_</div>
           </div>
@@ -179,42 +178,42 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Powerful Features
+              Old Protocol, New Tricks
             </h2>
             <p className="text-zinc-400">
-              Everything you need for modern IRC communication
+              All the reliability of IRC with none of the 90s jank
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
               icon={<RefreshCw className="text-emerald-400" />}
-              title="Smart Auto-Reconnect"
-              description="Automatic reconnection with exponential backoff when connections drop. Rejoins all your channels seamlessly."
+              title="Never Miss a Message"
+              description="Connection dropped? Already reconnected. Your channels are waiting exactly where you left them."
             />
             <FeatureCard
               icon={<Settings className="text-blue-400" />}
-              title="Comprehensive Settings"
-              description="6 organized categories for notifications, connection, interface, chat, downloads, and security preferences."
+              title="Your Client, Your Rules"
+              description="Tweak everything. Notifications, themes, keybinds, downloads. Make it yours."
             />
             <FeatureCard
               icon={<Key className="text-purple-400" />}
-              title="NickServ Authentication"
-              description="Automatic identification with NickServ on connect. Configure different passwords for each network."
+              title="One-Click Identity"
+              description="Auto-authenticate with NickServ the moment you connect. Set it once, forget it forever."
             />
             <FeatureCard
               icon={<Image className="text-cyan-400" />}
-              title="Inline Image Preview"
-              description="Images display directly in chat with lazy loading. No more clicking random links to see shared media."
+              title="See What They Share"
+              description="Images render inline. No sketchy link clicking. No opening random URLs in your browser."
             />
             <FeatureCard
               icon={<UserSearch className="text-green-400" />}
-              title="Visual WHOIS"
-              description="Professional WHOIS display with organized sections. See user info, channels, idle time, and more at a glance."
+              title="Know Who You're Talking To"
+              description="Clean WHOIS cards show you everything at a glance. Channels, idle time, connection info."
             />
             <FeatureCard
               icon={<ShieldCheck className="text-amber-400" />}
-              title="Encrypted Connections"
-              description="Enterprise-grade TLS encryption for all connections. Your private chats remain private."
+              title="Encrypted by Default"
+              description="TLS everywhere. Your conversations stay between you and the server. Period."
             />
           </div>
         </div>
@@ -224,31 +223,31 @@ export default function LandingPage() {
       <section className="relative z-10 py-24 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Who is SIRC For?
+            Built for People Who Get It
           </h2>
           <p className="text-zinc-400">
-            Built for power users who demand more from their IRC client
+            If you know why IRC still matters, you're in the right place
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <UseCaseCard
-            title="File Sharers"
-            description="Download media, books, and software via XDCC with built-in queue management."
+            title="XDCC Veterans"
+            description="Proper download management without the ancient UI. Queue up, sit back, grab everything."
             icon={<PackageOpen className="text-emerald-400" size={32} />}
           />
           <UseCaseCard
-            title="Community Managers"
-            description="Moderate multiple IRC channels from one interface with advanced user management."
+            title="Channel Ops"
+            description="Run your community without Big Tech watching over your shoulder. Your rules, your space."
             icon={<Users className="text-blue-400" size={32} />}
           />
           <UseCaseCard
-            title="Developers"
-            description="Connect to project IRC channels with protocol-level debugging and logging."
+            title="Devs & Hackers"
+            description="Where the real conversations happen. Freenode veterans and Libera refugees welcome."
             icon={<Laptop className="text-purple-400" size={32} />}
           />
           <UseCaseCard
-            title="Privacy Advocates"
-            description="Open-source alternative to Discord/Slack for communities that value privacy."
+            title="Privacy Maximalists"
+            description="No email signup. No phone verification. No algorithm deciding what you see."
             icon={<Lock className="text-cyan-400" size={32} />}
           />
         </div>
@@ -261,11 +260,10 @@ export default function LandingPage() {
       >
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Community Funded Roadmap
+            Fund What Gets Built
           </h2>
           <p className="text-zinc-400">
-            Donate to unlock advanced features. Features are released to the
-            public repo once funded.
+            No VCs. No corporate roadmap. The community decides what ships next.
           </p>
         </div>
 
@@ -399,11 +397,9 @@ export default function LandingPage() {
       <section id="faq" className="relative z-10 py-24 max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Frequently Asked Questions
+            Questions? Answers.
           </h2>
-          <p className="text-zinc-400">
-            Everything you need to know about SIRC
-          </p>
+          <p className="text-zinc-400">The stuff people actually ask us</p>
         </div>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem
