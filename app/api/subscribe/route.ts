@@ -1,28 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { type NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const { email } = await request.json()
 
     if (!email || !email.includes('@')) {
       return NextResponse.json(
         { error: 'Valid email is required' },
-        { status: 400 }
-      );
+        { status: 400 },
+      )
     }
 
     // Add to Resend audience (waitlist)
-    const audienceId = process.env.RESEND_AUDIENCE_ID;
+    const audienceId = process.env.RESEND_AUDIENCE_ID
 
     if (audienceId) {
       await resend.contacts.create({
         email,
         audienceId,
         unsubscribed: false,
-      });
+      })
     }
 
     // Send welcome email
@@ -53,14 +53,11 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-    });
+    })
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Subscription error:', error);
-    return NextResponse.json(
-      { error: 'Failed to subscribe' },
-      { status: 500 }
-    );
+    console.error('Subscription error:', error)
+    return NextResponse.json({ error: 'Failed to subscribe' }, { status: 500 })
   }
 }

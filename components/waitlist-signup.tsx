@@ -1,60 +1,76 @@
-"use client"
+'use client'
 
-import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Mail, CheckCircle, Loader2 } from "lucide-react";
+import { CheckCircle, Loader2, Mail } from 'lucide-react'
+import type React from 'react'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 interface WaitlistSignupProps {
-  className?: string;
-  variant?: 'inline' | 'hero';
+  className?: string
+  variant?: 'inline' | 'hero'
 }
 
-export function WaitlistSignup({ className = '', variant = 'inline' }: WaitlistSignupProps) {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+export function WaitlistSignup({
+  className = '',
+  variant = 'inline',
+}: WaitlistSignupProps) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMessage('')
 
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
-      });
+      })
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Failed to subscribe');
+        const data = await res.json()
+        throw new Error(data.error || 'Failed to subscribe')
       }
 
-      setStatus('success');
-      setEmail('');
+      setStatus('success')
+      setEmail('')
     } catch (err) {
-      setStatus('error');
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong');
+      setStatus('error')
+      setErrorMessage(
+        err instanceof Error ? err.message : 'Something went wrong',
+      )
     }
-  };
+  }
 
   if (status === 'success') {
     return (
       <div className={`flex items-center gap-3 text-emerald-400 ${className}`}>
         <CheckCircle size={20} />
-        <span className="font-medium">You&apos;re on the list! Check your email.</span>
+        <span className="font-medium">
+          You&apos;re on the list! Check your email.
+        </span>
       </div>
-    );
+    )
   }
 
   if (variant === 'hero') {
     return (
-      <form onSubmit={handleSubmit} className={`w-full max-w-md mx-auto ${className}`}>
+      <form
+        onSubmit={handleSubmit}
+        className={`w-full max-w-md mx-auto ${className}`}
+      >
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={18} />
+            <Mail
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500"
+              size={18}
+            />
             <Input
               type="email"
               placeholder="Enter your email"
@@ -84,7 +100,7 @@ export function WaitlistSignup({ className = '', variant = 'inline' }: WaitlistS
           Be the first to know when SIRC launches. No spam, ever.
         </p>
       </form>
-    );
+    )
   }
 
   return (
@@ -109,5 +125,5 @@ export function WaitlistSignup({ className = '', variant = 'inline' }: WaitlistS
         )}
       </Button>
     </form>
-  );
+  )
 }
