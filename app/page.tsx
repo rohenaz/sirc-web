@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket } from "lucide-react";
+import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket, PackageOpen, Lock, Laptop } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DepositModal } from "@/components/deposit-modal";
 
 // Bitcoin addresses for each bounty
@@ -142,57 +143,26 @@ export default function LandingPage() {
           <UseCaseCard
             title="File Sharers"
             description="Download media, books, and software via XDCC with built-in queue management."
-            icon="📦"
+            icon={<PackageOpen className="text-emerald-400" size={32} />}
           />
           <UseCaseCard
             title="Community Managers"
             description="Moderate multiple IRC channels from one interface with advanced user management."
-            icon="👥"
+            icon={<Users className="text-blue-400" size={32} />}
           />
           <UseCaseCard
             title="Developers"
             description="Connect to project IRC channels with protocol-level debugging and logging."
-            icon="💻"
+            icon={<Laptop className="text-purple-400" size={32} />}
           />
           <UseCaseCard
             title="Privacy Advocates"
             description="Open-source alternative to Discord/Slack for communities that value privacy."
-            icon="🔒"
+            icon={<Lock className="text-cyan-400" size={32} />}
           />
         </div>
       </section>
 
-      {/* Getting Started Section */}
-      <section className="relative z-10 py-24 bg-zinc-900/30 border-y border-zinc-800/50">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get Started in Minutes</h2>
-            <p className="text-zinc-400">Simple setup, powerful features</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <StepCard
-              number="1"
-              title="Download"
-              description="Get SIRC for Windows or macOS"
-            />
-            <StepCard
-              number="2"
-              title="Install"
-              description="One-click installation, no configuration needed"
-            />
-            <StepCard
-              number="3"
-              title="Connect"
-              description="Add your first IRC server"
-            />
-            <StepCard
-              number="4"
-              title="Explore"
-              description="Browse channels and start chatting"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Roadmap Funding Section */}
       <section id="roadmap" className="relative z-10 py-24 max-w-5xl mx-auto px-6">
@@ -266,32 +236,56 @@ export default function LandingPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
           <p className="text-zinc-400">Everything you need to know about SIRC</p>
         </div>
-        <div className="space-y-6">
-          <FAQItem
-            question="What is IRC?"
-            answer="IRC (Internet Relay Chat) is a real-time text messaging protocol. It's been the backbone of online communities since 1988, offering decentralized, privacy-focused communication."
-          />
-          <FAQItem
-            question="What is XDCC?"
-            answer="XDCC is a file-sharing protocol built on IRC. It allows users to download files from bots using simple commands. SIRC makes this process seamless with a modern interface."
-          />
-          <FAQItem
-            question="Is SIRC free?"
-            answer="Yes! SIRC is completely free to download and use. We're funded through community contributions for advanced features on our roadmap."
-          />
-          <FAQItem
-            question="Which IRC networks are supported?"
-            answer="SIRC supports all standard IRC networks including Libera.Chat, EFnet, DALnet, Undernet, and any custom IRC server you want to connect to."
-          />
-          <FAQItem
-            question="Is my data private?"
-            answer="Absolutely. SIRC uses TLS encryption for all connections, and all chat data stays on your device. We don't collect or store any of your conversations."
-          />
-          <FAQItem
-            question="How do I report bugs or request features?"
-            answer="Visit our GitHub repository to submit issues, request features, or contribute to development. We're actively maintained and love community feedback."
-          />
-        </div>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              What is IRC?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              IRC (Internet Relay Chat) is a real-time text messaging protocol. It&apos;s been the backbone of online communities since 1988, offering decentralized, privacy-focused communication.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              What is XDCC?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              XDCC is a file-sharing protocol built on IRC. It allows users to download files from bots using simple commands. SIRC makes this process seamless with a modern interface.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              Is SIRC free?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              Yes! SIRC is completely free to download and use. We&apos;re funded through community contributions for advanced features on our roadmap.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-4" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              Which IRC networks are supported?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              SIRC supports all standard IRC networks including Libera.Chat, EFnet, DALnet, Undernet, and any custom IRC server you want to connect to.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-5" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              Is my data private?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              Absolutely. SIRC uses TLS encryption for all connections, and all chat data stays on your device. We don&apos;t collect or store any of your conversations.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-6" className="bg-zinc-950 border border-zinc-800 rounded-xl mb-4 px-6">
+            <AccordionTrigger className="text-white hover:text-emerald-400 hover:no-underline">
+              How do I report bugs or request features?
+            </AccordionTrigger>
+            <AccordionContent className="text-zinc-400">
+              Visit our GitHub repository to submit issues, request features, or contribute to development. We&apos;re actively maintained and love community feedback.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </section>
 
       {/* Footer */}
@@ -312,25 +306,22 @@ export default function LandingPage() {
               <ul className="space-y-2 text-sm text-zinc-500">
                 <li><a href="#features" className="hover:text-emerald-400 transition-colors">Features</a></li>
                 <li><a href="#roadmap" className="hover:text-emerald-400 transition-colors">Roadmap</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Download</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Changelog</a></li>
+                <li><a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold text-white mb-3 text-sm">Resources</h3>
               <ul className="space-y-2 text-sm text-zinc-500">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">GitHub</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Community</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Support</a></li>
+                <li><a href="/docs" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
+                <li><a href="https://github.com/rohenaz" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold text-white mb-3 text-sm">Legal</h3>
               <ul className="space-y-2 text-sm text-zinc-500">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">License</a></li>
+                <li><a href="/privacy" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                <li><a href="/license" className="hover:text-emerald-400 transition-colors">License</a></li>
               </ul>
             </div>
           </div>
@@ -340,9 +331,8 @@ export default function LandingPage() {
               <span className="font-mono text-zinc-500 text-sm">© 2024 SIRC Systems. All rights reserved.</span>
             </div>
             <div className="flex gap-6 text-sm text-zinc-600">
-              <a href="#" className="hover:text-emerald-400 transition-colors">GitHub</a>
-              <a href="#" className="hover:text-emerald-400 transition-colors">Twitter</a>
-              <a href="#" className="hover:text-emerald-400 transition-colors">Discord</a>
+              <a href="https://github.com/rohenaz" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a>
+              <a href="https://x.com/wildsatchmo" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">X</a>
             </div>
           </div>
         </div>
@@ -379,10 +369,10 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
   )
 }
 
-function UseCaseCard({ title, description, icon }: { title: string, description: string, icon: string }) {
+function UseCaseCard({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
   return (
     <div className="p-6 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-emerald-500/50 transition-all group text-center">
-      <div className="text-4xl mb-4">{icon}</div>
+      <div className="mb-4 flex justify-center">{icon}</div>
       <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
       <p className="text-zinc-400 text-sm leading-relaxed">
         {description}
@@ -391,27 +381,3 @@ function UseCaseCard({ title, description, icon }: { title: string, description:
   )
 }
 
-function StepCard({ number, title, description }: { number: string, title: string, description: string }) {
-  return (
-    <div className="text-center">
-      <div className="w-12 h-12 bg-emerald-900/20 border border-emerald-500/50 rounded-full flex items-center justify-center text-emerald-400 font-bold text-lg mx-auto mb-4">
-        {number}
-      </div>
-      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-      <p className="text-zinc-400 text-sm leading-relaxed">
-        {description}
-      </p>
-    </div>
-  )
-}
-
-function FAQItem({ question, answer }: { question: string, answer: string }) {
-  return (
-    <div className="p-6 rounded-xl bg-zinc-950 border border-zinc-800">
-      <h3 className="text-lg font-semibold text-white mb-3">{question}</h3>
-      <p className="text-zinc-400 leading-relaxed">
-        {answer}
-      </p>
-    </div>
-  )
-}
