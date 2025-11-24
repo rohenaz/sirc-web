@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket, PackageOpen, Lock, Laptop } from "lucide-react";
+import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket, PackageOpen, Lock, Laptop, RefreshCw, Settings, Key, Image, UserSearch } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DepositModal } from "@/components/deposit-modal";
 
@@ -51,7 +51,7 @@ export default function LandingPage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          v1.0.4 Stable Release
+          New Release Available
         </Badge>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white bg-clip-text">
@@ -82,10 +82,10 @@ export default function LandingPage() {
             <div className="ml-4 text-xs text-zinc-500 font-mono">sirc-client — #general — connected</div>
           </div>
           <div className="p-6 font-mono text-sm text-left space-y-2">
-            <div className="text-zinc-500">12:04:01 &lt;system&gt; Connected to irc.sirc.network (TLS)</div>
-            <div><span className="text-emerald-500 font-bold">&lt;satchmo&gt;</span> Just pushed the new build. File sharing is instant now.</div>
-            <div><span className="text-blue-400 font-bold">&lt;user_01&gt;</span> The UI is incredibly clean. Finally an IRC client that doesn&apos;t look like 1998.</div>
-            <div><span className="text-purple-400 font-bold">&lt;bot_x&gt;</span> [SIRC] v1.0.4 ready for download. </div>
+            <div className="text-zinc-500">12:04:01 &lt;system&gt; Connected to irc.libera.chat (TLS)</div>
+            <div className="text-zinc-500">12:04:02 &lt;system&gt; NickServ: You are now identified</div>
+            <div><span className="text-emerald-500 font-bold">&lt;satchmo&gt;</span> Auto-reconnect saved me during that network blip. Rejoined all channels automatically.</div>
+            <div><span className="text-blue-400 font-bold">&lt;user_01&gt;</span> The inline image preview is so clean. No more clicking random links.</div>
             <div className="text-zinc-600 animate-pulse">_</div>
           </div>
         </div>
@@ -100,34 +100,34 @@ export default function LandingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              icon={<Server className="text-emerald-400" />}
-              title="Multi-Server Support"
-              description="Connect to unlimited IRC servers simultaneously. Manage all your communities from one interface."
+              icon={<RefreshCw className="text-emerald-400" />}
+              title="Smart Auto-Reconnect"
+              description="Automatic reconnection with exponential backoff when connections drop. Rejoins all your channels seamlessly."
             />
             <FeatureCard
-              icon={<List className="text-blue-400" />}
-              title="Channel Browser"
-              description="Browse and search thousands of channels in real-time. Discover new communities instantly."
+              icon={<Settings className="text-blue-400" />}
+              title="Comprehensive Settings"
+              description="6 organized categories for notifications, connection, interface, chat, downloads, and security preferences."
             />
             <FeatureCard
-              icon={<Download className="text-purple-400" />}
-              title="XDCC Downloads"
-              description="Download files directly from IRC bots with queue management. Fast, reliable file transfers."
+              icon={<Key className="text-purple-400" />}
+              title="NickServ Authentication"
+              description="Automatic identification with NickServ on connect. Configure different passwords for each network."
             />
             <FeatureCard
-              icon={<Users className="text-cyan-400" />}
-              title="User List & Modes"
-              description="Color-coded user lists showing ops, voice, and other modes. Know who's who at a glance."
+              icon={<Image className="text-cyan-400" />}
+              title="Inline Image Preview"
+              description="Images display directly in chat with lazy loading. No more clicking random links to see shared media."
             />
             <FeatureCard
-              icon={<ShieldCheck className="text-green-400" />}
+              icon={<UserSearch className="text-green-400" />}
+              title="Visual WHOIS"
+              description="Professional WHOIS display with organized sections. See user info, channels, idle time, and more at a glance."
+            />
+            <FeatureCard
+              icon={<ShieldCheck className="text-amber-400" />}
               title="Encrypted Connections"
-              description="Enterprise-grade TLS connection management. Your private chats remain private."
-            />
-            <FeatureCard
-              icon={<FileText className="text-amber-400" />}
-              title="IRC Protocol Log"
-              description="Debug panel for advanced users and troubleshooting. See exactly what's happening under the hood."
+              description="Enterprise-grade TLS encryption for all connections. Your private chats remain private."
             />
           </div>
         </div>
@@ -328,7 +328,7 @@ export default function LandingPage() {
           <Separator className="mb-8 bg-zinc-800" />
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <span className="font-mono text-zinc-500 text-sm">© 2024 SIRC Systems. All rights reserved.</span>
+              <span className="font-mono text-zinc-500 text-sm">© 2025 SIRC Systems. All rights reserved.</span>
             </div>
             <div className="flex gap-6 text-sm text-zinc-600">
               <a href="https://github.com/rohenaz" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a>
