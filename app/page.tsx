@@ -9,6 +9,9 @@ import { Separator } from "@/components/ui/separator";
 import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket, PackageOpen, Lock, Laptop, RefreshCw, Settings, Key, Image, UserSearch } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DepositModal } from "@/components/deposit-modal";
+import { WaitlistSignup } from "@/components/waitlist-signup";
+
+const isWaitlistMode = process.env.NEXT_PUBLIC_WAITLIST_MODE === 'true';
 
 // Bitcoin addresses for each bounty
 const BOUNTY_ADDRESSES = {
@@ -35,11 +38,10 @@ export default function LandingPage() {
           <a href="#features" className="hover:text-emerald-400 transition-colors">Features</a>
           <a href="#roadmap" className="hover:text-emerald-400 transition-colors">Roadmap</a>
           <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
-          <a href="#" className="hover:text-emerald-400 transition-colors">Docs</a>
         </div>
         <div className="flex gap-4">
           <Button className="bg-white text-black hover:bg-emerald-400 hover:text-black font-semibold transition-all">
-            Download Client
+            {isWaitlistMode ? 'Join Waitlist' : 'Download Client'}
           </Button>
         </div>
       </nav>
@@ -51,7 +53,7 @@ export default function LandingPage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          New Release Available
+          {isWaitlistMode ? 'Coming Soon' : 'New Release Available'}
         </Badge>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white bg-clip-text">
@@ -64,14 +66,18 @@ export default function LandingPage() {
           Engineered for seamless file sharing and built to preserve history.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <Button size="lg" className="h-14 px-8 text-lg bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_-5px_rgba(16,185,129,0.4)]">
-            <HardDrive className="mr-2 h-5 w-5" /> Download for Windows
-          </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-500">
-             Download for Mac
-          </Button>
-        </div>
+        {isWaitlistMode ? (
+          <WaitlistSignup variant="hero" />
+        ) : (
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <Button size="lg" className="h-14 px-8 text-lg bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_-5px_rgba(16,185,129,0.4)]">
+              <HardDrive className="mr-2 h-5 w-5" /> Download for Windows
+            </Button>
+            <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-500">
+               Download for Mac
+            </Button>
+          </div>
+        )}
 
         {/* Terminal Mockup */}
         <div className="mt-20 mx-auto max-w-4xl rounded-xl border border-zinc-800 bg-zinc-950/80 shadow-2xl backdrop-blur overflow-hidden">
@@ -310,10 +316,10 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-3 text-sm">Resources</h3>
+              <h3 className="font-semibold text-white mb-3 text-sm">Connect</h3>
               <ul className="space-y-2 text-sm text-zinc-500">
-                <li><a href="/docs" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
                 <li><a href="https://github.com/rohenaz" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">GitHub</a></li>
+                <li><a href="https://x.com/wildsatchmo" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">X / Twitter</a></li>
               </ul>
             </div>
             <div>
