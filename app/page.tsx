@@ -15,6 +15,7 @@ import {
   Terminal,
   UserSearch,
   Users,
+  Wallet,
 } from 'lucide-react'
 import type React from 'react'
 import { useState } from 'react'
@@ -45,11 +46,12 @@ const isWaitlistMode = process.env.NEXT_PUBLIC_WAITLIST_MODE === 'true'
 const BOUNTY_ADDRESSES = {
   bsvLogging: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
   xdccIndexing: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
+  walletIntegration: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
 }
 
 export default function LandingPage() {
   const [activeModal, setActiveModal] = useState<
-    'bsvLogging' | 'xdccIndexing' | null
+    'bsvLogging' | 'xdccIndexing' | 'walletIntegration' | null
   >(null)
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-emerald-500/30">
@@ -349,6 +351,47 @@ export default function LandingPage() {
               </Button>
             </CardFooter>
           </Card>
+
+          {/* Goal 3: BRC-100 Wallet Integration */}
+          <Card className="bg-zinc-900 border-zinc-800 hover:border-emerald-500/30 transition-all duration-300">
+            <CardHeader>
+              <div className="flex justify-between items-start">
+                <Badge
+                  variant="secondary"
+                  className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 mb-2"
+                >
+                  BRC-100
+                </Badge>
+                <Wallet className="text-zinc-600" />
+              </div>
+              <CardTitle className="text-xl text-white">
+                Wallet Integration
+              </CardTitle>
+              <CardDescription>
+                Send crypto directly in IRC with wallet-centric commands. Pay
+                anyone in any cryptocurrency, starting with BSV support.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex justify-between text-sm font-mono text-zinc-300">
+                <span>Raised: $0</span>
+                <span>Goal: $6,000</span>
+              </div>
+              <Progress
+                value={0}
+                className="h-2 bg-zinc-800 [&>*]:bg-emerald-500"
+              />
+              <p className="text-xs text-zinc-500 pt-2">0 Contributors</p>
+            </CardContent>
+            <CardFooter>
+              <Button
+                onClick={() => setActiveModal('walletIntegration')}
+                className="w-full bg-zinc-800 hover:bg-emerald-600 hover:text-white text-zinc-300 border border-zinc-700"
+              >
+                Contribute (BSV)
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </section>
 
@@ -596,6 +639,14 @@ export default function LandingPage() {
         onOpenChange={(open) => setActiveModal(open ? 'xdccIndexing' : null)}
         address={BOUNTY_ADDRESSES.xdccIndexing}
         featureName="XDCC Indexing Suite"
+      />
+      <DepositModal
+        open={activeModal === 'walletIntegration'}
+        onOpenChange={(open) =>
+          setActiveModal(open ? 'walletIntegration' : null)
+        }
+        address={BOUNTY_ADDRESSES.walletIntegration}
+        featureName="BRC-100 Wallet Integration"
       />
     </main>
   )
