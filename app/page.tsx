@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code } from "lucide-react";
+import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code, Server, List, Download, Users, FileText, Rocket } from "lucide-react";
 import { DepositModal } from "@/components/deposit-modal";
 
 // Bitcoin addresses for each bounty
@@ -33,6 +33,7 @@ export default function LandingPage() {
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
           <a href="#features" className="hover:text-emerald-400 transition-colors">Features</a>
           <a href="#roadmap" className="hover:text-emerald-400 transition-colors">Roadmap</a>
+          <a href="#faq" className="hover:text-emerald-400 transition-colors">FAQ</a>
           <a href="#" className="hover:text-emerald-400 transition-colors">Docs</a>
         </div>
         <div className="flex gap-4">
@@ -92,21 +93,102 @@ export default function LandingPage() {
       {/* Features Grid */}
       <section id="features" className="relative z-10 py-24 bg-zinc-900/30 border-y border-zinc-800/50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Powerful Features</h2>
+            <p className="text-zinc-400">Everything you need for modern IRC communication</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              icon={<Share2 className="text-emerald-400" />}
-              title="Seamless Transfer"
-              description="Direct Client-to-Client (DCC) reimagined. Drag, drop, and transfer huge files without firewall headaches."
+              icon={<Server className="text-emerald-400" />}
+              title="Multi-Server Support"
+              description="Connect to unlimited IRC servers simultaneously. Manage all your communities from one interface."
             />
             <FeatureCard
-              icon={<ShieldCheck className="text-cyan-400" />}
-              title="Encrypted by Default"
+              icon={<List className="text-blue-400" />}
+              title="Channel Browser"
+              description="Browse and search thousands of channels in real-time. Discover new communities instantly."
+            />
+            <FeatureCard
+              icon={<Download className="text-purple-400" />}
+              title="XDCC Downloads"
+              description="Download files directly from IRC bots with queue management. Fast, reliable file transfers."
+            />
+            <FeatureCard
+              icon={<Users className="text-cyan-400" />}
+              title="User List & Modes"
+              description="Color-coded user lists showing ops, voice, and other modes. Know who's who at a glance."
+            />
+            <FeatureCard
+              icon={<ShieldCheck className="text-green-400" />}
+              title="Encrypted Connections"
               description="Enterprise-grade TLS connection management. Your private chats remain private."
             />
             <FeatureCard
-              icon={<Zap className="text-amber-400" />}
-              title="Ultra-Clean UI"
-              description="Shadcn-powered interface. Distraction-free dark mode with customizable syntax highlighting."
+              icon={<FileText className="text-amber-400" />}
+              title="IRC Protocol Log"
+              description="Debug panel for advanced users and troubleshooting. See exactly what's happening under the hood."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Who is SIRC For? Section */}
+      <section className="relative z-10 py-24 max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Who is SIRC For?</h2>
+          <p className="text-zinc-400">Built for power users who demand more from their IRC client</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <UseCaseCard
+            title="File Sharers"
+            description="Download media, books, and software via XDCC with built-in queue management."
+            icon="📦"
+          />
+          <UseCaseCard
+            title="Community Managers"
+            description="Moderate multiple IRC channels from one interface with advanced user management."
+            icon="👥"
+          />
+          <UseCaseCard
+            title="Developers"
+            description="Connect to project IRC channels with protocol-level debugging and logging."
+            icon="💻"
+          />
+          <UseCaseCard
+            title="Privacy Advocates"
+            description="Open-source alternative to Discord/Slack for communities that value privacy."
+            icon="🔒"
+          />
+        </div>
+      </section>
+
+      {/* Getting Started Section */}
+      <section className="relative z-10 py-24 bg-zinc-900/30 border-y border-zinc-800/50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get Started in Minutes</h2>
+            <p className="text-zinc-400">Simple setup, powerful features</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <StepCard
+              number="1"
+              title="Download"
+              description="Get SIRC for Windows or macOS"
+            />
+            <StepCard
+              number="2"
+              title="Install"
+              description="One-click installation, no configuration needed"
+            />
+            <StepCard
+              number="3"
+              title="Connect"
+              description="Add your first IRC server"
+            />
+            <StepCard
+              number="4"
+              title="Explore"
+              description="Browse channels and start chatting"
             />
           </div>
         </div>
@@ -178,17 +260,90 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="relative z-10 py-24 max-w-4xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-zinc-400">Everything you need to know about SIRC</p>
+        </div>
+        <div className="space-y-6">
+          <FAQItem
+            question="What is IRC?"
+            answer="IRC (Internet Relay Chat) is a real-time text messaging protocol. It's been the backbone of online communities since 1988, offering decentralized, privacy-focused communication."
+          />
+          <FAQItem
+            question="What is XDCC?"
+            answer="XDCC is a file-sharing protocol built on IRC. It allows users to download files from bots using simple commands. SIRC makes this process seamless with a modern interface."
+          />
+          <FAQItem
+            question="Is SIRC free?"
+            answer="Yes! SIRC is completely free to download and use. We're funded through community contributions for advanced features on our roadmap."
+          />
+          <FAQItem
+            question="Which IRC networks are supported?"
+            answer="SIRC supports all standard IRC networks including Libera.Chat, EFnet, DALnet, Undernet, and any custom IRC server you want to connect to."
+          />
+          <FAQItem
+            question="Is my data private?"
+            answer="Absolutely. SIRC uses TLS encryption for all connections, and all chat data stays on your device. We don't collect or store any of your conversations."
+          />
+          <FAQItem
+            question="How do I report bugs or request features?"
+            answer="Visit our GitHub repository to submit issues, request features, or contribute to development. We're actively maintained and love community feedback."
+          />
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-12 bg-zinc-950 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center gap-2 mb-4 md:mb-0">
-            <Terminal size={16} className="text-emerald-600" />
-            <span className="font-mono text-zinc-500 text-sm">© 2024 SIRC Systems</span>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-emerald-900/20 border border-emerald-500/50 rounded flex items-center justify-center text-emerald-500">
+                  <Terminal size={18} />
+                </div>
+                <span className="font-mono text-xl font-bold tracking-tighter text-white">SIRC</span>
+              </div>
+              <p className="text-sm text-zinc-500">Modern IRC client for the decentralized era.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white mb-3 text-sm">Product</h3>
+              <ul className="space-y-2 text-sm text-zinc-500">
+                <li><a href="#features" className="hover:text-emerald-400 transition-colors">Features</a></li>
+                <li><a href="#roadmap" className="hover:text-emerald-400 transition-colors">Roadmap</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Download</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Changelog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white mb-3 text-sm">Resources</h3>
+              <ul className="space-y-2 text-sm text-zinc-500">
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">GitHub</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Community</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Support</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white mb-3 text-sm">Legal</h3>
+              <ul className="space-y-2 text-sm text-zinc-500">
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-emerald-400 transition-colors">License</a></li>
+              </ul>
+            </div>
           </div>
-          <div className="flex gap-6 text-sm text-zinc-600">
-            <a href="#" className="hover:text-white">GitHub</a>
-            <a href="#" className="hover:text-white">Twitter</a>
-            <a href="#" className="hover:text-white">Privacy</a>
+          <Separator className="mb-8 bg-zinc-800" />
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+              <span className="font-mono text-zinc-500 text-sm">© 2024 SIRC Systems. All rights reserved.</span>
+            </div>
+            <div className="flex gap-6 text-sm text-zinc-600">
+              <a href="#" className="hover:text-emerald-400 transition-colors">GitHub</a>
+              <a href="#" className="hover:text-emerald-400 transition-colors">Twitter</a>
+              <a href="#" className="hover:text-emerald-400 transition-colors">Discord</a>
+            </div>
           </div>
         </div>
       </footer>
@@ -219,6 +374,43 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-zinc-400 leading-relaxed">
         {description}
+      </p>
+    </div>
+  )
+}
+
+function UseCaseCard({ title, description, icon }: { title: string, description: string, icon: string }) {
+  return (
+    <div className="p-6 rounded-xl bg-zinc-950 border border-zinc-800 hover:border-emerald-500/50 transition-all group text-center">
+      <div className="text-4xl mb-4">{icon}</div>
+      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+      <p className="text-zinc-400 text-sm leading-relaxed">
+        {description}
+      </p>
+    </div>
+  )
+}
+
+function StepCard({ number, title, description }: { number: string, title: string, description: string }) {
+  return (
+    <div className="text-center">
+      <div className="w-12 h-12 bg-emerald-900/20 border border-emerald-500/50 rounded-full flex items-center justify-center text-emerald-400 font-bold text-lg mx-auto mb-4">
+        {number}
+      </div>
+      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+      <p className="text-zinc-400 text-sm leading-relaxed">
+        {description}
+      </p>
+    </div>
+  )
+}
+
+function FAQItem({ question, answer }: { question: string, answer: string }) {
+  return (
+    <div className="p-6 rounded-xl bg-zinc-950 border border-zinc-800">
+      <h3 className="text-lg font-semibold text-white mb-3">{question}</h3>
+      <p className="text-zinc-400 leading-relaxed">
+        {answer}
       </p>
     </div>
   )
