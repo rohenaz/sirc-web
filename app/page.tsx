@@ -1,12 +1,22 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Terminal, Share2, ShieldCheck, Zap, Globe, HardDrive, ChevronRight, Code } from "lucide-react";
+import { DepositModal } from "@/components/deposit-modal";
+
+// Bitcoin addresses for each bounty
+const BOUNTY_ADDRESSES = {
+  bsvLogging: "1BitcoinEaterAddressDontSendf59kuE", // Replace with actual address
+  xdccIndexing: "1BitcoinEaterAddressDontSendf59kuE", // Replace with actual address
+};
 
 export default function LandingPage() {
+  const [activeModal, setActiveModal] = useState<'bsvLogging' | 'xdccIndexing' | null>(null);
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-emerald-500/30">
       {/* Background Grid Effect */}
@@ -26,7 +36,6 @@ export default function LandingPage() {
           <a href="#" className="hover:text-emerald-400 transition-colors">Docs</a>
         </div>
         <div className="flex gap-4">
-          <Button variant="ghost" className="font-mono text-xs hover:bg-zinc-900 hover:text-emerald-400">Log In</Button>
           <Button className="bg-white text-black hover:bg-emerald-400 hover:text-black font-semibold transition-all">
             Download Client
           </Button>
@@ -72,7 +81,7 @@ export default function LandingPage() {
           </div>
           <div className="p-6 font-mono text-sm text-left space-y-2">
             <div className="text-zinc-500">12:04:01 &lt;system&gt; Connected to irc.sirc.network (TLS)</div>
-            <div><span className="text-emerald-500 font-bold">&lt;rohenaz&gt;</span> Just pushed the new build. File sharing is instant now.</div>
+            <div><span className="text-emerald-500 font-bold">&lt;satchmo&gt;</span> Just pushed the new build. File sharing is instant now.</div>
             <div><span className="text-blue-400 font-bold">&lt;user_01&gt;</span> The UI is incredibly clean. Finally an IRC client that doesn&apos;t look like 1998.</div>
             <div><span className="text-purple-400 font-bold">&lt;bot_x&gt;</span> [SIRC] v1.0.4 ready for download. </div>
             <div className="text-zinc-600 animate-pulse">_</div>
@@ -130,7 +139,10 @@ export default function LandingPage() {
               <p className="text-xs text-zinc-500 pt-2">124 Contributors</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full bg-zinc-800 hover:bg-orange-600 hover:text-white text-zinc-300 border border-zinc-700">
+              <Button
+                onClick={() => setActiveModal('bsvLogging')}
+                className="w-full bg-zinc-800 hover:bg-orange-600 hover:text-white text-zinc-300 border border-zinc-700"
+              >
                 Contribute (BSV)
               </Button>
             </CardFooter>
@@ -155,7 +167,10 @@ export default function LandingPage() {
               <p className="text-xs text-zinc-500 pt-2">42 Contributors</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full bg-zinc-800 hover:bg-blue-600 hover:text-white text-zinc-300 border border-zinc-700">
+              <Button
+                onClick={() => setActiveModal('xdccIndexing')}
+                className="w-full bg-zinc-800 hover:bg-blue-600 hover:text-white text-zinc-300 border border-zinc-700"
+              >
                 Contribute
               </Button>
             </CardFooter>
@@ -177,6 +192,20 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Deposit Modals */}
+      <DepositModal
+        open={activeModal === 'bsvLogging'}
+        onOpenChange={(open) => setActiveModal(open ? 'bsvLogging' : null)}
+        address={BOUNTY_ADDRESSES.bsvLogging}
+        featureName="On-Chain IRC Logging"
+      />
+      <DepositModal
+        open={activeModal === 'xdccIndexing'}
+        onOpenChange={(open) => setActiveModal(open ? 'xdccIndexing' : null)}
+        address={BOUNTY_ADDRESSES.xdccIndexing}
+        featureName="XDCC Indexing Suite"
+      />
     </main>
   );
 }
