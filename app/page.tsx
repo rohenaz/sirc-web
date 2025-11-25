@@ -8,6 +8,7 @@ import {
   Key,
   Laptop,
   Lock,
+  Network,
   PackageOpen,
   RefreshCw,
   Settings,
@@ -48,12 +49,13 @@ const BOUNTY_ADDRESSES = {
   bsvLogging: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
   xdccIndexing: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
   walletIntegration: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
+  p2pOverlay: '1BitcoinEaterAddressDontSendf59kuE', // Replace with actual address
 }
 
 export default function LandingPage() {
   const os = useOSDetection()
   const [activeModal, setActiveModal] = useState<
-    'bsvLogging' | 'xdccIndexing' | 'walletIntegration' | null
+    'bsvLogging' | 'xdccIndexing' | 'walletIntegration' | 'p2pOverlay' | null
   >(null)
 
   // Download URLs (placeholder - update with actual binary URLs)
@@ -366,8 +368,8 @@ export default function LandingPage() {
                 XDCC Indexing Suite
               </CardTitle>
               <CardDescription>
-                Integration with SunXDCC & SkullXDCC. Search and download
-                packets directly from the client UI.
+                Index XDCC messages and make them searchable. Search and
+                download packets directly from the client UI.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -426,6 +428,47 @@ export default function LandingPage() {
               <Button
                 onClick={() => setActiveModal('walletIntegration')}
                 className="w-full bg-zinc-800 hover:bg-emerald-600 hover:text-white text-zinc-300 border border-zinc-700"
+              >
+                Contribute (BSV)
+              </Button>
+            </CardFooter>
+          </Card>
+
+          {/* Goal 4: Open Source P2P Overlay */}
+          <Card className="bg-zinc-900 border-zinc-800 hover:border-emerald-500/30 transition-all duration-300">
+            <CardHeader>
+              <div className="flex justify-between items-start">
+                <Badge
+                  variant="secondary"
+                  className="bg-purple-500/10 text-purple-500 border-purple-500/20 mb-2"
+                >
+                  Open Source
+                </Badge>
+                <Network className="text-zinc-600" />
+              </div>
+              <CardTitle className="text-xl text-white">
+                P2P Data Overlay
+              </CardTitle>
+              <CardDescription>
+                Open source the peer-to-peer overlay infrastructure for on-chain
+                data. Generic, reusable stack for the community.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex justify-between text-sm font-mono text-zinc-300">
+                <span>Raised: $0</span>
+                <span>Goal: $10,000</span>
+              </div>
+              <Progress
+                value={0}
+                className="h-2 bg-zinc-800 [&>*]:bg-purple-500"
+              />
+              <p className="text-xs text-zinc-500 pt-2">0 Contributors</p>
+            </CardContent>
+            <CardFooter>
+              <Button
+                onClick={() => setActiveModal('p2pOverlay')}
+                className="w-full bg-zinc-800 hover:bg-purple-600 hover:text-white text-zinc-300 border border-zinc-700"
               >
                 Contribute (BSV)
               </Button>
@@ -686,6 +729,12 @@ export default function LandingPage() {
         }
         address={BOUNTY_ADDRESSES.walletIntegration}
         featureName="BRC-100 Wallet Integration"
+      />
+      <DepositModal
+        open={activeModal === 'p2pOverlay'}
+        onOpenChange={(open) => setActiveModal(open ? 'p2pOverlay' : null)}
+        address={BOUNTY_ADDRESSES.p2pOverlay}
+        featureName="P2P Data Overlay"
       />
     </main>
   )
