@@ -45,12 +45,11 @@ export async function POST(request: NextRequest) {
           </div>
 
           <p style="color: #e4e4e7; line-height: 1.6;">
-            Thanks for joining the SIRC waitlist! You'll be among the first to know when we launch.
+            You're in. We'll let you know the moment SIRC is ready to download.
           </p>
 
           <p style="color: #a1a1aa; line-height: 1.6; margin-top: 24px;">
-            SIRC is a hyper-clean, dark-mode native IRC client built for the decentralized era.
-            Features include auto-reconnect, inline image previews, NickServ authentication, and more.
+            No accounts. No tracking. No corporate overlords. Just encrypted chat on the protocol that's been running since 1988.
           </p>
 
           <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #27272a;">
