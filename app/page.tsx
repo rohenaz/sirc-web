@@ -39,6 +39,7 @@ import {
 import { Progress } from '@/components/ui/progress'
 import { Separator } from '@/components/ui/separator'
 import { WaitlistSignup } from '@/components/waitlist-signup'
+import { useOSDetection } from '@/lib/use-os-detection'
 
 const isWaitlistMode = process.env.NEXT_PUBLIC_WAITLIST_MODE === 'true'
 
@@ -50,9 +51,31 @@ const BOUNTY_ADDRESSES = {
 }
 
 export default function LandingPage() {
+  const os = useOSDetection()
   const [activeModal, setActiveModal] = useState<
     'bsvLogging' | 'xdccIndexing' | 'walletIntegration' | null
   >(null)
+
+  // Download URLs (placeholder - update with actual binary URLs)
+  const downloadUrls = {
+    windows: '#download-windows',
+    macos: '#download-macos',
+  }
+
+  const handleDownload = () => {
+    if (os === 'windows' && downloadUrls.windows) {
+      window.location.href = downloadUrls.windows
+    } else if (os === 'macos' && downloadUrls.macos) {
+      window.location.href = downloadUrls.macos
+    }
+  }
+
+  const getDownloadButtonText = () => {
+    if (os === 'windows') return 'Download for Windows'
+    if (os === 'macos') return 'Download for Mac'
+    return 'Download Client'
+  }
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-emerald-500/30">
       {/* Background Grid Effect */}
@@ -86,8 +109,11 @@ export default function LandingPage() {
           </a>
         </div>
         <div className="flex gap-4">
-          <Button className="bg-white text-black hover:bg-emerald-400 hover:text-black font-semibold transition-all">
-            {isWaitlistMode ? 'Join Waitlist' : 'Download Client'}
+          <Button
+            onClick={!isWaitlistMode ? handleDownload : undefined}
+            className="bg-white text-black hover:bg-emerald-400 hover:text-black font-semibold transition-all"
+          >
+            {isWaitlistMode ? 'Join Waitlist' : getDownloadButtonText()}
           </Button>
         </div>
       </nav>
@@ -121,18 +147,31 @@ export default function LandingPage() {
           <WaitlistSignup variant="hero" />
         ) : (
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            {/* Primary button - detected OS or Windows as fallback */}
             <Button
               size="lg"
+              onClick={() => {
+                const primaryUrl =
+                  os === 'macos' ? downloadUrls.macos : downloadUrls.windows
+                window.location.href = primaryUrl
+              }}
               className="h-14 px-8 text-lg bg-emerald-600 hover:bg-emerald-500 text-white shadow-[0_0_20px_-5px_rgba(16,185,129,0.4)]"
             >
-              <HardDrive className="mr-2 h-5 w-5" /> Download for Windows
+              <HardDrive className="mr-2 h-5 w-5" />
+              {os === 'macos' ? 'Download for Mac' : 'Download for Windows'}
             </Button>
+            {/* Secondary button - alternate OS */}
             <Button
               size="lg"
               variant="outline"
+              onClick={() => {
+                const secondaryUrl =
+                  os === 'macos' ? downloadUrls.windows : downloadUrls.macos
+                window.location.href = secondaryUrl
+              }}
               className="h-14 px-8 text-lg border-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-500"
             >
-              Download for Mac
+              {os === 'macos' ? 'Download for Windows' : 'Download for Mac'}
             </Button>
           </div>
         )}
