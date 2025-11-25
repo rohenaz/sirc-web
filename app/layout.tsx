@@ -2,35 +2,35 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SIRC - Modern IRC Client with XDCC Support | Free Download',
+  title: 'SIRC - Hello IRC, Meet Bitcoin',
   description:
-    'A powerful, modern IRC client built with Wails3. Connect to multiple servers, browse channels in real-time, download files via XDCC, and enjoy a native desktop experience. Open source and cross-platform.',
+    'No accounts. No tracking. No corporate overlords. SIRC is encrypted IRC chat on the protocol that built the internet. XDCC downloads, auto-reconnect, and privacy by default.',
   keywords: [
     'IRC client',
     'XDCC',
-    'file transfer',
-    'chat client',
-    'IRC',
-    'desktop app',
-    'Wails',
+    'encrypted chat',
+    'private messaging',
+    'decentralized',
     'open source',
-    'multi-server',
-    'channel browser',
+    'privacy',
+    'no tracking',
+    'desktop app',
+    'file sharing',
   ],
   authors: [{ name: 'SIRC Systems' }],
   openGraph: {
-    title: 'SIRC - Modern IRC Client with XDCC Support',
+    title: 'SIRC - Hello IRC, Meet Bitcoin',
     description:
-      'A powerful, modern IRC client for seamless file sharing and IRC communication. Native desktop app for Windows and macOS.',
+      'No accounts. No tracking. No corporate overlords. Encrypted chat on the protocol that built the internet.',
     type: 'website',
     locale: 'en_US',
     siteName: 'SIRC',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SIRC - Modern IRC Client with XDCC Support',
+    title: 'SIRC - Hello IRC, Meet Bitcoin',
     description:
-      'A powerful, modern IRC client for seamless file sharing and IRC communication. Native desktop app for Windows and macOS.',
+      'No accounts. No tracking. No corporate overlords. Encrypted chat on the protocol that built the internet.',
   },
 }
 

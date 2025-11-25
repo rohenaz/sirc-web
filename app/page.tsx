@@ -106,9 +106,9 @@ export default function LandingPage() {
         </Badge>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white bg-clip-text">
-          IRC Reimagined for the <br className="hidden md:block" />
+          Hello IRC, <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-            Decentralized Era
+            Meet Bitcoin
           </span>
         </h1>
 
