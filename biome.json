@@ -13,7 +13,8 @@
       "**/*.js",
       "**/*.jsx",
       "**/*.json",
-      "!components/ui"
+      "!components/ui",
+      "!.source"
     ]
   },
   "formatter": {
